@@ -21,8 +21,12 @@ export default function jsdocPlugin (options = {}) {
         bin = path.join(jsdocRoot, 'jsdoc')
       }
       childProcess = spawn(bin, args, opt)
-      childProcess.stdout.on('data', function (data) { console.log('\x1b[33m%s\x1b[0m', '[JSDOC] ' + data.toString()) })
-      childProcess.stderr.on('data', function (data) { console.error('\x1b[31m%s\x1b[0m', '[JSDOC] ' + data.toString()) })
+      childProcess.stdout.on('data', function (data) {
+        console.log('\x1b[33m%s\x1b[0m', '[JSDOC] ' + data.toString())
+      })
+      childProcess.stderr.on('data', function (data) {
+        console.error('\x1b[31m%s\x1b[0m', '[JSDOC] ' + data.toString())
+      })
       childProcess.on('close', function () {
         console.log('\x1b[33m%s\x1b[0m', 'JsDoc Generated')
       })
